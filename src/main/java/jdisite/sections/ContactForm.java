@@ -1,123 +1,25 @@
 package jdisite.sections;
 
+import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
+import com.epam.jdi.light.elements.composite.Form;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
+import com.epam.jdi.light.ui.html.elements.common.*;
+import com.epam.jdi.light.ui.html.elements.complex.DataListOptions;
+import jdisite.elements.MultiDropdown;
 import jdisite.entities.ContactInfo;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
+public class ContactForm extends Form<ContactInfo> {
+    @UI("#contact-form #name") TextField name;
+    @UI("#last-name") TextField lastName;
+    @UI("#position") TextField position;
+    @UI("#passport-number") TextField passportNumber;
+    @UI("#passport-seria") TextField passportSeria;
+    @UI("#gender") Dropdown gender;
+    @UI("#religion") DataListOptions religion;
+    @UI("#weather .caret") MultiDropdown weather;
+    @UI("#accept-conditions") Checkbox acceptConditions;
+    @UI("#passport") Checkbox passport;
+    @UI("#description") TextArea description;
+    @UI("#contact-form [type=submit]") Button submit;
 
-import static java.lang.String.valueOf;
-import static org.testng.Assert.assertEquals;
-
-public class ContactForm {
-    @UI("#contact-form #name") WebElement nameTextField;
-    @UI("#last-name") WebElement lastNameTextField;
-    @UI("#position") WebElement positionTextField;
-    @UI("#passport-number") WebElement passportNumberTextField;
-    @UI("#passport-seria") WebElement passportSeriaTextField;
-    // Dropdown
-    @UI("#gender") WebElement gender;
-    private Select gender() { return new Select(gender); }
-    // Combobox
-    @UI("#religion") WebElement religion;
-    // MultiDropdown
-    @UI("#weather .caret") WebElement weatherExpand;
-    @UI("#weather label") List<WebElement> weatherList;
-    @UI("#weather button") WebElement weatherValue;
-    @UI("#weather ul") WebElement weatherIsExpanded;
-    private boolean weatherIsExpanded() {
-        return weatherIsExpanded.getAttribute("style").equals("display: block;");
-    }
-    private void selectWeather(String value) {
-        if (!weatherIsExpanded())
-            weatherExpand.click();
-        String[] values = value.split(", ");
-        for (String val : values) {
-            for (WebElement listOption : weatherList) {
-                if (listOption.getText().trim().equals(val))
-                    listOption.click();
-            }
-        }
-    }
-    @UI("#accept-conditions") WebElement acceptConditionsCheckbox;
-    @UI("#passport") WebElement passportCheckbox;
-    @UI("#description") WebElement descriptionText;
-    @UI("#contact-form [type=submit]") WebElement submitButton;
-    public void submit(ContactInfo contact) {
-        if (contact.name != null) {
-            nameTextField.clear();
-            nameTextField.sendKeys(contact.name);
-        }
-        if (contact.lastName != null) {
-            lastNameTextField.clear();
-            lastNameTextField.sendKeys(contact.lastName);
-        }
-        if (contact.position != null) {
-            positionTextField.clear();
-            positionTextField.sendKeys(contact.position);
-        }
-        if (contact.passportNumber != -1) {
-            passportNumberTextField.clear();
-            passportNumberTextField.sendKeys(valueOf(contact.passportNumber));
-        }
-        if (contact.passportSeria != -1) {
-            passportSeriaTextField.clear();
-            passportSeriaTextField.sendKeys(valueOf(contact.passportSeria));
-        }
-        // Dropdown
-        if (contact.gender != null) {
-            gender().selectByVisibleText(contact.gender);
-        }
-        // Combobox
-        if (contact.religion != null) {
-            religion.clear();
-            religion.sendKeys(contact.religion);
-        }
-        // MultiDropdown
-        if (contact.weather != null) {
-            selectWeather(contact.weather);
-        }
-        // Checkboxes
-        if (contact.passport && !passportCheckbox.isSelected() ||
-                !contact.passport && passportCheckbox.isSelected())
-            passportCheckbox.click();
-        if (contact.acceptConditions && !acceptConditionsCheckbox.isSelected() ||
-                !contact.acceptConditions && acceptConditionsCheckbox.isSelected())
-            acceptConditionsCheckbox.click();
-        // TextArea
-        if (contact.description != null) {
-            descriptionText.clear();
-            descriptionText.sendKeys(contact.description);
-        }
-        submitButton.click();
-    }
-    public void check(ContactInfo contact) {
-        // TextFields
-        if (contact.name != null)
-            assertEquals(nameTextField.getAttribute("value"), contact.name);
-        if (contact.lastName != null)
-            assertEquals(lastNameTextField.getAttribute("value"), contact.lastName);
-        if (contact.position != null)
-            assertEquals(positionTextField.getAttribute("value"), contact.position);
-        if (contact.passportNumber != -1)
-            assertEquals(passportNumberTextField.getAttribute("value"), valueOf(contact.passportNumber));
-        if (contact.passportSeria != -1)
-            assertEquals(passportSeriaTextField.getAttribute("value"), valueOf(contact.passportSeria));
-        // Dropdown
-        if (contact.gender != null)
-            assertEquals(gender().getFirstSelectedOption().getText(), contact.gender);
-        // Combobox
-        if (contact.religion != null)
-            assertEquals(religion.getAttribute("value"), contact.religion);
-        // MultiDropdown
-        if (contact.weather != null)
-            assertEquals(weatherValue.getText(), contact.weather);
-        // Checkboxes
-        assertEquals(passportCheckbox.isSelected(), contact.passport);
-        assertEquals(acceptConditionsCheckbox.isSelected(), contact.acceptConditions);
-        // TextArea
-        if (contact.description != null)
-            assertEquals(descriptionText.getAttribute("value"), contact.description);
-    }
 }

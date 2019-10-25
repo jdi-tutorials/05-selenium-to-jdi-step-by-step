@@ -34,7 +34,7 @@ public class ContactForm implements TestsInit {
     @Test
     public void submitContactFormSimpleTest() {
         contactPage.checkOpened();
-        sContactForm.submit(FULL_CONTACT);
-        sContactForm.check(FULL_CONTACT);
+        sContactForm.submit(SIMPLE_CONTACT);
+        sContactForm.check(SIMPLE_CONTACT);
     }
 }
