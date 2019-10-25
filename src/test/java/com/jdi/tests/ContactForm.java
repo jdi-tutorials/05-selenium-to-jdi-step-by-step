@@ -10,13 +10,12 @@ import static com.jdi.test.data.DefaultDataProvider.SIMPLE_CONTACT;
 import static jdisite.enums.MenuOptions.ContactForm;
 import static jdisite.pages.ContactPage.*;
 import static jdisite.pages.JDISite.*;
-import static jdisite.pages.JDISite.selectInMenu;
 
 public class ContactForm implements TestsInit {
     @BeforeMethod
     public void before() {
         loggedIn();
-        selectInMenu(ContactForm);
+        leftMenu.select(ContactForm);
     }
 
     @Test
