@@ -4,7 +4,7 @@ import jdisite.sections.ContactForm;
 import jdisite.sections.ShortContactForm;
 
 import static jdisite.utils.DriverUtils.DRIVER;
-import static org.openqa.selenium.support.PageFactory.initElements;
+import static com.epam.jdi.light.elements.init.PageFactory.initElements;
 import static org.testng.Assert.assertEquals;
 
 public class ContactPage {
