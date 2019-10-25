@@ -6,8 +6,8 @@ import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
 
+import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
 import static com.epam.jdi.light.elements.init.PageFactory.initSite;
-import static java.lang.Runtime.getRuntime;
 import static jdisite.pages.JDISite.homePage;
 
 public interface TestsInit {
@@ -18,6 +18,6 @@ public interface TestsInit {
     }
     @AfterSuite(alwaysRun = true)
     static void teardown() throws IOException {
-        getRuntime().exec("taskkill /F /IM chromedriver.exe /T");
+        killAllSeleniumDrivers();
     }
 }
