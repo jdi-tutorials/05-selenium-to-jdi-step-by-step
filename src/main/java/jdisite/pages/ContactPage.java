@@ -10,6 +10,6 @@ import jdisite.sections.ContactForm;
 
 @Url("/contacts.html") @Title("Contact Form")
 public class ContactPage extends WebPage {
-    public static ContactForm contactForm;
+    @UI("#contact-form") public static ContactForm contactForm;
     @UI("#contact-form") public static Form<ContactInfo> sContactForm;
 }

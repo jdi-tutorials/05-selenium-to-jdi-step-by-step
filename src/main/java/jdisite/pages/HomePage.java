@@ -7,7 +7,7 @@ import com.epam.jdi.light.ui.html.elements.common.*;
 
 @Url("/")
 public class HomePage extends WebPage {
-    @UI("#user-icon") public static Icon userIcon;
-    @UI("#user-name") public static Text userName;
+    public static Icon userIcon;
+    public static Text userName;
     @UI(".fa-sign-out") public static Button logout;
 }

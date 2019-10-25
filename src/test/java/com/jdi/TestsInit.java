@@ -17,7 +17,7 @@ public interface TestsInit {
         homePage.open();
     }
     @AfterSuite(alwaysRun = true)
-    static void teardown() throws IOException {
+    static void teardown() {
         killAllSeleniumDrivers();
     }
 }
