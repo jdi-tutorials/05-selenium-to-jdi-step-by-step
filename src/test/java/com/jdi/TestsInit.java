@@ -6,7 +6,6 @@ import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
 
-import static com.epam.jdi.light.driver.WebDriverFactory.getDriver;
 import static com.epam.jdi.light.elements.init.PageFactory.initSite;
 import static java.lang.Runtime.getRuntime;
 import static jdisite.pages.JDISite.homePage;

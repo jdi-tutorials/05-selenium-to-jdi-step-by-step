@@ -8,6 +8,6 @@ import jdisite.sections.ShortContactForm;
 
 @Url("/contacts.html") @Title("Contact Form")
 public class ContactPage extends WebPage {
-    public ContactForm contactForm;
-    public ShortContactForm sContactForm;
+    public static ContactForm contactForm;
+    public static ShortContactForm sContactForm;
 }

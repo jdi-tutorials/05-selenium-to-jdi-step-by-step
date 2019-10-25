@@ -9,6 +9,6 @@ import org.openqa.selenium.support.FindBy;
 @Url("/html5.html") @Title("HTML 5")
 public class Html5Page extends WebPage {
     @FindBy(id = "suspend-button")
-    public WebElement suspendButton;
+    public static WebElement suspendButton;
 
 }
