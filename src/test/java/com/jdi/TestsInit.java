@@ -4,8 +4,6 @@ import jdisite.pages.JDISite;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import java.io.IOException;
-
 import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
 import static com.epam.jdi.light.elements.init.PageFactory.initSite;
 import static jdisite.pages.JDISite.homePage;

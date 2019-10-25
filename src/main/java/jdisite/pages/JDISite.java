@@ -11,6 +11,6 @@ public class JDISite {
     public static Html5Page htmlPage;
 
     public static Form<User> loginForm;
-    @UI("//*[contains(@class, 'sidebar-menu')]//span[.='%s']")
+    @UI(".sidebar-menu span")
     public static Menu leftMenu;
 }
