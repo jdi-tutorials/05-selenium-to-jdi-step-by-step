@@ -10,15 +10,15 @@ import java.io.IOException;
 import static com.epam.jdi.light.driver.WebDriverFactory.getDriver;
 import static com.epam.jdi.light.elements.init.PageFactory.initSite;
 import static java.lang.Runtime.getRuntime;
+import static jdisite.pages.JDISite.homePage;
 import static jdisite.utils.DriverUtils.DRIVER;
-import static jdisite.utils.DriverUtils.runChromeDriver;
 
 public interface TestsInit {
     @BeforeSuite(alwaysRun = true)
     static void setUp() {
         initSite(JDISite.class);
         DRIVER = getDriver();
-        DRIVER.navigate().to(HomePage.URL);
+        homePage.open();
     }
     @AfterSuite(alwaysRun = true)
     static void teardown() throws IOException {
