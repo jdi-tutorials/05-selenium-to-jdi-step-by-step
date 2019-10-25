@@ -1,8 +1,8 @@
 package jdisite.sections;
 
+import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import jdisite.entities.ContactInfo;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -11,21 +11,21 @@ import static java.lang.String.valueOf;
 import static org.testng.Assert.assertEquals;
 
 public class ContactForm {
-    @FindBy(css ="#contact-form #name") WebElement nameTextField;
-    @FindBy(id = "last-name") WebElement lastNameTextField;
-    @FindBy(id = "position") WebElement positionTextField;
-    @FindBy(id = "passport-number") WebElement passportNumberTextField;
-    @FindBy(id = "passport-seria") WebElement passportSeriaTextField;
+    @UI("#contact-form #name") WebElement nameTextField;
+    @UI("#last-name") WebElement lastNameTextField;
+    @UI("#position") WebElement positionTextField;
+    @UI("#passport-number") WebElement passportNumberTextField;
+    @UI("#passport-seria") WebElement passportSeriaTextField;
     // Dropdown
-    @FindBy(id = "gender") WebElement gender;
+    @UI("#gender") WebElement gender;
     private Select gender() { return new Select(gender); }
     // Combobox
-    @FindBy(id = "religion") WebElement religion;
+    @UI("#religion") WebElement religion;
     // MultiDropdown
-    @FindBy(css ="#weather .caret") WebElement weatherExpand;
-    @FindBy(css ="#weather label") List<WebElement> weatherList;
-    @FindBy(css ="#weather button") WebElement weatherValue;
-    @FindBy(css ="#weather ul") WebElement weatherIsExpanded;
+    @UI("#weather .caret") WebElement weatherExpand;
+    @UI("#weather label") List<WebElement> weatherList;
+    @UI("#weather button") WebElement weatherValue;
+    @UI("#weather ul") WebElement weatherIsExpanded;
     private boolean weatherIsExpanded() {
         return weatherIsExpanded.getAttribute("style").equals("display: block;");
     }
@@ -40,10 +40,10 @@ public class ContactForm {
             }
         }
     }
-    @FindBy(id = "accept-conditions") WebElement acceptConditionsCheckbox;
-    @FindBy(id = "passport") WebElement passportCheckbox;
-    @FindBy(id = "description") WebElement descriptionText;
-    @FindBy(css ="#contact-form [type=submit]") WebElement submitButton;
+    @UI("#accept-conditions") WebElement acceptConditionsCheckbox;
+    @UI("#passport") WebElement passportCheckbox;
+    @UI("#description") WebElement descriptionText;
+    @UI("#contact-form [type=submit]") WebElement submitButton;
     public void submit(ContactInfo contact) {
         if (contact.name != null) {
             nameTextField.clear();

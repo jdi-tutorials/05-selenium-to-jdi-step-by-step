@@ -1,15 +1,15 @@
 package jdisite.elements;
 
+import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class MultiDropdown {
-    @FindBy(css ="#weather .caret") WebElement weatherExpand;
-    @FindBy(css ="#weather label") List<WebElement> weatherList;
-    @FindBy(css ="#weather button") WebElement weatherValue;
-    @FindBy(css ="#weather ul") WebElement weatherIsExpanded;
+    @UI("#weather .caret") WebElement weatherExpand;
+    @UI("#weather label") List<WebElement> weatherList;
+    @UI("#weather button") WebElement weatherValue;
+    @UI("#weather ul") WebElement weatherIsExpanded;
     private boolean weatherIsExpanded() {
         return weatherIsExpanded.getAttribute("style").equals("display: block;");
     }
